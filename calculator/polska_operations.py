@@ -31,7 +31,7 @@ def translator(code: list) -> list:
 
     for v in code:
 
-        if re.match('[0-9]+[.]*[0-9]*', v) or v == 'x':
+        if re.match('[-+]?[0-9]+[.]*[0-9]*', v) or v == 'x':
             result.append(v)
 
         elif v in priority:

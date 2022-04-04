@@ -11,6 +11,7 @@ class Automate(object):
         self.state_checker = {}
         self.has_parameter = False
         self.correct_counter = 0
+        self.is_unary_minus = False
 
     def start_analysis(self, expression: str) -> list:
         self.expression = expression
@@ -51,8 +52,11 @@ class Automate(object):
 
     def add_piece(self, costyl=0):
         if self.hlp != '':
-            self.result += [self.hlp]
-            self.hlp = ''
+            if self.is_unary_minus is False:
+                self.result += [self.hlp]
+                self.hlp = ''
+            else:
+                self.is_unary_minus = False
 
     def is_number(self, val: str):
         if val.isdigit():
@@ -95,6 +99,7 @@ class Automate(object):
         if val == '-':
             self.add_piece()
             self.hlp += val
+            self.is_unary_minus = True
 
             self.correct_counter += 1
             return True
