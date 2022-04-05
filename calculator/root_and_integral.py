@@ -37,7 +37,7 @@ def finder(func: list, x1: float, x2: float):  # func это функция в �
 
 
 def integral_finder(func: list, x1: float, x2: float) -> float:
-    iterations = 1000
+    iterations = 10000
     step = (x2 - x1) / iterations
     current_step = x1
     summ = 0
